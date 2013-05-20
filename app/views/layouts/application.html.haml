@@ -31,6 +31,12 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
+            %ul.nav.pull-right
+              - unless signed_in?
+                %li= link_to "login", new_session_path
+              - if signed_in?
+                %li= link_to(current_user.email, edit_user_path(current_user.id)) 
+                %li= link_to("logout", session_path(current_user.id), :method => :delete)
 
     .container
 
@@ -46,7 +52,7 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
-    
+
       %footer
         %p &copy; Company 2013
     /
