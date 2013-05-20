@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby'
 gem "tconsole", "~> 1.2.8"
+gem "unicorn", "~> 4.6.2"			
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
