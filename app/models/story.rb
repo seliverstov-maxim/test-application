@@ -1,3 +1,5 @@
 class Story < ActiveRecord::Base
-  attr_accessible :description, :owner_id, :performer_id, :state, :title
+  attr_accessible :description, :title#, :owner_id, :performer_id, :state
+
+  belongs_to :user
 end
