@@ -8,3 +8,8 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+.container a.brand:hover { 
+  background-color: transparent; 
+  color: #333333;
+}
+.container a.btn { color: #000;}
