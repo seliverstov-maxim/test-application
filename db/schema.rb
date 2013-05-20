@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516144603) do
+ActiveRecord::Schema.define(:version => 20130520155055) do
+
+  create_table "stories", :force => true do |t|
+    t.integer  "owner_id"
+    t.integer  "performer_id"
+    t.string   "state"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
