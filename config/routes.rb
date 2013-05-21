@@ -3,7 +3,7 @@ Railsapp::Application.routes.draw do
   resources :sessions
   resources :stories
 
-  root :to => 'users#index'
+  root :to => 'stories#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
