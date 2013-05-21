@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   
-  skip_before_filter :require_login, :only => [:create]
+  skip_before_filter :authenticate_user!, :only => [:new, :create]
 
   def create
     user = User.find_by_email(params[:email])
