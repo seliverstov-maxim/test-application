@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  owner_id: 1
+  performer_id: 1
+  state: MyString
+  title: MyString
+  description: MyText
+
+two:
+  owner_id: 1
+  performer_id: 1
+  state: MyString
+  title: MyString
+  description: MyText

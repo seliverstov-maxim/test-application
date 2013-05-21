@@ -1,0 +1,15 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootstrap-responsive";
+.container a.brand:hover { 
+  background-color: transparent; 
+  color: #333333;
+}
+.container a.btn { color: #000;}
