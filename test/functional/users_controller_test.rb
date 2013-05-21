@@ -3,12 +3,24 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:Bob)
+
+    user = users(:Tom)
+    sign_in user
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:users)
+  end
+
+  test "should create user" do
+    params = {email: "test@email", password: "test"}
+    post :create, user: params
+
+    assert_response :redirect
+
+    user = User.find_by_email(params[:email])
+    assert_not_nil user
   end
 
   test "should get new" do
@@ -16,34 +28,24 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create user" do
-    assert_difference('User.count') do
-      post :create, user: { email: 'test@email', password: 'pass' }
-    end
-
-    assert_redirected_to user_path(assigns(:user))
-  end
-
-  test "should show user" do
-    get :show, id: @user
-    assert_response :success
-  end
-
   test "should get edit" do
-    get :edit, id: @user
+    get :edit, {id: @user.id}
     assert_response :success
   end
 
   test "should update user" do
-    put :update, id: @user, user: { email: @user.email, password: @user.password }
-    assert_redirected_to user_path(assigns(:user))
+    params = {email: "test@email", password: "test"}
+    
+    post :update, user: params, id: @user.id
+    assert_response :redirect
+    
+    @user.reload
+    assert_equal params[:email], @user.email
   end
 
   test "should destroy user" do
-    assert_difference('User.count', -1) do
-      delete :destroy, id: @user
-    end
-
-    assert_redirected_to users_path
+    delete :destroy, {id: @user.id}
+    assert_response :redirect
+    #assert !User.exists?(@user)
   end
 end
