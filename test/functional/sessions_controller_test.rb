@@ -1,18 +1,22 @@
 require 'test_helper'
 class SessionsControllerTest < ActionController::TestCase
   setup do 
-    @user = users(:Bob)
+    @user = create :user
   end
 
   test 'user login successfully' do 
-    post :create, {email: @user.email, password: 'testpass'}
+    post :create, {email: @user.email, password: 'secret'}
     assert_redirected_to root_url
-    assert_equal @user.id, session[:user_id]
+
+    assert signed_in?
   end
 
-  test 'user login failed' do
-    post :create, {email: @user.email, password: 'invalid password'}
-    assert_response :success
-    assert_nil session[:user_id]
+  test 'user logout successfully' do
+    sign_in @user
+
+    delete :destroy, {id: @user}
+    assert_response :redirect
+
+    assert !signed_in?
   end
 end
