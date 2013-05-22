@@ -12,9 +12,9 @@ development:
 test:
   adapter: postgresql
   database: task_manager_test
-  username: task_manager
+  username: postgres
   encoding: unicode
-  password: undev
+  password:
   timeout: 5000
 
 production:
