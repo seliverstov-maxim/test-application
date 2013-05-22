@@ -2,3 +2,8 @@ Bob:
   id: 1
   email: bob@mail.com
   password_digest: <%= BCrypt::Password.create('testpass') %>
+
+Tom:
+  id: 2
+  email: tom@mail.com
+  password_digest: <%= BCrypt::Password.create('testpass') %>
