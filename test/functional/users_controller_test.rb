@@ -44,8 +44,9 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should destroy user" do
-    delete :destroy, {id: @user.id}
+    delete :destroy, {id: @user}
     assert_response :redirect
-    #assert !User.exists?(@user)
+    
+    assert_equal false, User.exists?(@user)
   end
 end
