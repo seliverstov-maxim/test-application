@@ -19,6 +19,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do 
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
+  gem 'factory_girl_rails'
+end
+
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby'
@@ -27,6 +33,8 @@ gem 'unicorn', '~> 4.6.2'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'less-rails'
+gem 'newrelic_rpm'
+gem 'airbrake'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

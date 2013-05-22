@@ -1,3 +1,5 @@
+{<img src="https://coveralls.io/repos/seliverstov-maxim/test-application/badge.png?branch=develop" alt="Coverage Status" />}[https://coveralls.io/r/seliverstov-maxim/test-application?branch=develop]
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
