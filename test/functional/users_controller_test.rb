@@ -13,6 +13,11 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get show" do
+    get :show, {id: @user}
+    assert_response :success
+  end
+
   test "should create user" do
     params = {email: "test@email", password: "test"}
     post :create, user: params
