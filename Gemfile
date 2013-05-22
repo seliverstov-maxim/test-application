@@ -21,6 +21,8 @@ end
 
 group :test do 
   gem 'coveralls', require: false
+  gem 'simplecov', require: false
+  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails'
