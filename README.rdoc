@@ -1,4 +1,5 @@
 {<img src="https://coveralls.io/repos/seliverstov-maxim/test-application/badge.png?branch=develop" alt="Coverage Status" />}[https://coveralls.io/r/seliverstov-maxim/test-application?branch=develop]
+{<img src="https://codeclimate.com/github/seliverstov-maxim/test-application.png" />}[https://codeclimate.com/github/seliverstov-maxim/test-application]
 
 == Welcome to Rails
 
