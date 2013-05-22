@@ -12,6 +12,8 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test 'user logout successfully' do
+    sign_in @user
+
     delete :destroy, {id: @user}
     assert_response :redirect
 
