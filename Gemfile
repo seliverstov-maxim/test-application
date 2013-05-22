@@ -19,6 +19,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do 
+  gem 'coveralls', require: false
+end
+
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby'
