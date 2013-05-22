@@ -3,6 +3,6 @@ class User < ActiveRecord::Base
   has_secure_password 
   validates_presence_of :password, :on => :create
 
-  has_many :stories, dependent: :nullify, foreign_key: "owner_id"
-  has_many :stories, dependent: :nullify, foreign_key: "performer_id"
+  has_many :owner_stories, dependent: :destroy, class_name: "Story", foreign_key: "owner_id"
+  has_many :perfomer_stories, dependent: :nullify, class_name: "Story", foreign_key: "performer_id"
 end
