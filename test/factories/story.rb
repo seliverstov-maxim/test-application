@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :story do
-    title :story_title
-    description :story_description
+    title { generate :story_title }
+    description { generate :story_description }
     association :owner, factory: :user
     association :performer, factory: :user
   end
