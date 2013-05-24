@@ -18,12 +18,23 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should get new' do
+    get :new
+    assert_response :success
   end
 
   test 'should get edit' do
+    get :edit, {id: @story}
+    assert_response :success
   end
 
   test 'should crate story' do
+    story_attr = attributes_for :story
+
+    post :create, story_attr
+    assert_response :redirect
+
+    story = Story.find_by_title(story_attr[:title])
+    assert_not_nil story
   end
 
   test 'should update story' do
