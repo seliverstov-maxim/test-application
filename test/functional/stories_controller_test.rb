@@ -28,16 +28,30 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should crate story' do
-    story_attr = attributes_for :story
+    story = build :story
 
-    post :create, story_attr
+    param = {
+      title: story.title,
+      description: story.description,
+      owner_id: story.owner_id,
+      performer_id: story.performer_id
+    }
+
+    post :create, story: param
     assert_response :redirect
 
-    story = Story.find_by_title(story_attr[:title])
+    story = Story.find_by_title(story.title)
     assert_not_nil story
   end
 
   test 'should update story' do
+    story_attr = attributes_for :story
+
+    post :update, {id: @story.id, story: story_attr}
+    assert_response :redirect
+
+    @story.reload
+    assert_equal story_attr[:title], @story.title
   end
 
   test 'should remove strory' do
