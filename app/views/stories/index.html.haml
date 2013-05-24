@@ -16,8 +16,8 @@
     - @stories.each do |story|
       %tr
         %td= link_to story.id, story_path(story)
-        %td= story.owner_id
-        %td= story.performer_id
+        %td= story.owner.email
+        %td= story.performer.email
         %td= story.state
         %td= story.title
         %td= story.description

@@ -5,11 +5,11 @@
 %p
   %strong= model_class.human_attribute_name(:owner_id) + ':'
   %br
-  = @story.owner_id
+  = @story.owner.email
 %p
   %strong= model_class.human_attribute_name(:performer_id) + ':'
   %br
-  = @story.performer_id
+  = @story.performer.email
 %p
   %strong= model_class.human_attribute_name(:state) + ':'
   %br
