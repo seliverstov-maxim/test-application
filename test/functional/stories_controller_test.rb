@@ -27,7 +27,7 @@ class StoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should crate story' do
+  test 'should create story' do
     story = build :story
 
     param = {
@@ -55,5 +55,9 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should remove strory' do
+    delete :destroy, {id: @story}
+    assert_response :redirect
+
+    assert !Story.exists?(@user)
   end
 end
