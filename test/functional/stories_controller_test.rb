@@ -8,9 +8,13 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should get index' do
+    get :index
+    assert_response :success
   end
 
   test 'shoul get show' do
+    get :show, {id: @story}
+    assert_response :success
   end
 
   test 'should get new' do
