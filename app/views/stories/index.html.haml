@@ -17,7 +17,7 @@
       %tr
         %td= link_to story.id, story_path(story)
         %td= story.owner.email
-        %td= story.performer.email
+        %td= story.performer.try :email
         %td= story.state
         %td= story.title
         %td= story.description

@@ -9,7 +9,7 @@
 %p
   %strong= model_class.human_attribute_name(:performer_id) + ':'
   %br
-  = @story.performer.email
+  = @story.performer.try :email
 %p
   %strong= model_class.human_attribute_name(:state) + ':'
   %br
