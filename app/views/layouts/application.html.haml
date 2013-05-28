@@ -28,9 +28,8 @@
           %a.brand(href="#") Railsapp
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "tasks", stories_path
+              %li= link_to "users", users_path
             %ul.nav.pull-right
               - unless signed_in?
                 %li= link_to "login", new_session_path
