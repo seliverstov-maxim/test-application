@@ -62,9 +62,12 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should set story state to started' do
-    put :update, id: @story, event: :start
+    old_state = @story.state
+    
+    put :update, id: @story, story: {state_event: :start}
     assert_response :redirect
+    
     @story.reload
-    p @story
+    assert_not_equal @story.state, old_state
   end
 end
