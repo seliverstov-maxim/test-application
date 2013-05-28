@@ -23,6 +23,9 @@
   %br
   = @story.description
 
+- @story.state_events.each do |e|
+  = link_to e, story_path(id: @story, story: { state_event: e }), class: "btn btn-success", method: :put
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), stories_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_story_path(@story), :class => 'btn'
