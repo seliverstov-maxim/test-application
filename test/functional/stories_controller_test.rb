@@ -60,4 +60,11 @@ class StoriesControllerTest < ActionController::TestCase
 
     assert !Story.exists?(@user)
   end
+
+  test 'should set story state to started' do
+    put :update, id: @story, event: :start
+    assert_response :redirect
+    @story.reload
+    p @story
+  end
 end
