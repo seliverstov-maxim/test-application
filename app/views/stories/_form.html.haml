@@ -1,8 +1,6 @@
 = simple_form_for @story, :html => { :class => 'form-horizontal' } do |f|
   = f.input :title
   = f.input :description
-  -unless @story.new?
-    = f.input :state_event, collection: @story.state_transitions.map{|tr| [tr.human_event, tr.event]}
   = f.association :owner, label_method: :email
   = f.association :performer, label_method: :email
   .form-actions
