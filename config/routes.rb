@@ -2,6 +2,7 @@ Railsapp::Application.routes.draw do
   resources :users
   resources :sessions
   resources :stories
+  resources :comments, only: [:create, :destroy]
 
   root :to => 'stories#index'
 
