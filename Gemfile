@@ -36,6 +36,7 @@ gem 'less-rails'
 gem 'newrelic_rpm'
 gem 'airbrake'
 gem 'state_machine'
+gem 'ransack'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
