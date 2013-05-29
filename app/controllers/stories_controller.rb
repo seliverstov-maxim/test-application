@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   def index
-    @stories = Story.all
+    @search = Story.search(params[:q])
+    @stories = @search.result(:distinct => true)
   end
 
   def show
