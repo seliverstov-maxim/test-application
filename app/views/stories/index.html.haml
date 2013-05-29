@@ -1,6 +1,12 @@
 - model_class = Story
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
+= search_form_for @search, html: {:class => 'form-inline'} do |f|
+  = f.select :owner_id_eq, options_from_collection_for_select(User.order(:email), 'id', 'email')
+  = f.select :performer_id_eq, options_from_collection_for_select(User.order(:email), 'id', 'email')
+  = f.select :state_eq, options_from_collection_for_select(Story.state_machine.states, 'name', 'name'), promt: "Gender..."
+  = f.submit 'Filter'
+
 %table.table.table-striped
   %thead
     %tr
