@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  owner_id: 1
+  task_id: 1
+  message: MyString
+
+two:
+  owner_id: 1
+  task_id: 1
+  message: MyString
