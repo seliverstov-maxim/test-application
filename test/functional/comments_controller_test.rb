@@ -19,7 +19,7 @@ class CommentsControllerTest < ActionController::TestCase
       message: comment.message,
     }
 
-    post :create, comment: param
+    post :create, comment: param, story_id: comment.story_id
     assert_response :redirect
 
     comment = Comment.find_by_message(comment.message)
@@ -27,7 +27,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test 'should destroy comment' do
-    delete :destroy, {id: @comment}
+    delete :destroy, {id: @comment, story_id: @comment.story_id}
     assert_response :redirect
 
     assert !Comment.exists?(@comment)
