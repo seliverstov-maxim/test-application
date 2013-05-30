@@ -9,5 +9,9 @@ FactoryGirl.define do
 
   sequence :story_description do |n|
     "Story description #{n}"
-  end  
+  end
+
+  sequence :comment_message do |n|
+    "Comment message #{n}"
+  end
 end
