@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :comment do
     association :owner, factory: :user
-    association :story, factory: :story
+    association :story
 
     message { generate :comment_message}
   end
