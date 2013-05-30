@@ -5,11 +5,11 @@
 %p
   %strong= model_class.human_attribute_name(:owner_id) + ':'
   %br
-  = @story.owner_id
+  = @story.owner.email
 %p
   %strong= model_class.human_attribute_name(:performer_id) + ':'
   %br
-  = @story.performer_id
+  = @story.performer.try :email
 %p
   %strong= model_class.human_attribute_name(:state) + ':'
   %br
@@ -23,7 +23,27 @@
   %br
   = @story.description
 
+- @story.state_events.each do |e|
+  = link_to e, story_path(id: @story, story: { state_event: e }), class: "btn btn-success", method: :put
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), stories_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_story_path(@story), :class => 'btn'
   = link_to t('.destroy', :default => t("helpers.links.destroy")), story_path(@story), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+
+%legend Comments
+%table.table.table-striped.table-condensed
+  - @comments.each do |c|
+    %tr
+      %td
+        = c.message
+        .float-left
+          %em
+            = l c.created_at
+            \&nbsp;by&nbsp
+            = c.owner.email
+
+= simple_form_for [@story, @comment] do |f|
+  = f.input :story_id, as: :hidden, value: @story.id
+  = f.input :message, as: :text, input_html: {rows: 3}, label: false
+  = f.button :submit, value: 'add'
