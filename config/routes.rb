@@ -1,8 +1,10 @@
 Railsapp::Application.routes.draw do
   resources :users
   resources :sessions
-  resources :stories
-  resources :comments, only: [:create, :destroy]
+  resources :stories do
+    resources :comments, only: [:create, :destroy]
+  end
+  
 
   root :to => 'stories#index'
 
