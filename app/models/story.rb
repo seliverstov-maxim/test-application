@@ -9,6 +9,8 @@ class Story < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
   belongs_to :performer, class_name: "User"
 
+  has_many :comments, dependent: :destroy, class_name: "Comment"
+
   validates :owner, presence: true
 
   state_machine :state, initial: :new do
