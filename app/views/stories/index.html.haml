@@ -1,6 +1,12 @@
 - model_class = Story
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
+= search_form_for @search, html: {:class => 'form-inline'} do |f|
+  = f.select :owner_id_eq, options_from_collection_for_select(User.order(:email), 'id', 'email')
+  = f.select :performer_id_eq, options_from_collection_for_select(User.order(:email), 'id', 'email')
+  = f.select :state_eq, options_from_collection_for_select(Story.state_machine.states, 'name', 'name'), promt: "Gender..."
+  = f.submit 'Filter'
+
 %table.table.table-striped
   %thead
     %tr
@@ -16,13 +22,14 @@
     - @stories.each do |story|
       %tr
         %td= link_to story.id, story_path(story)
-        %td= story.owner_id
-        %td= story.performer_id
+        %td= story.owner.email
+        %td= story.performer.try :email
         %td= story.state
         %td= story.title
         %td= story.description
         %td=l story.created_at
         %td
+          = link_to t('.show', :default => t("helpers.links.show")), story_path(story), :class => 'btn btn-mini'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_story_path(story), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), story_path(story), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
