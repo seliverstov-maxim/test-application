@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
+    @comment.owner = current_user
 
     if @comment.save
       redirect_to :back
