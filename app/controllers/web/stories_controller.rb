@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+class Web::StoriesController < Web::ApplicationController
   def index
     @search = Story.search(params[:q])
     @stories = @search.result(:distinct => true)
