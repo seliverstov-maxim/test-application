@@ -3,7 +3,7 @@ Railsapp::Application.routes.draw do
     resources :users
     resources :sessions
     resources :stories do
-      scope :module => :comments do
+      scope :module => :story do
         resources :comments, only: [:create, :destroy]
       end
     end
