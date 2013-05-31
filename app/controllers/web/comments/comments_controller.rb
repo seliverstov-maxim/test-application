@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Web::Comments::CommentsController < Web::Comments::ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.owner = current_user
