@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StoriesControllerTest < ActionController::TestCase
+class Web::StoriesControllerTest < ActionController::TestCase
   setup do
     @user = create :user
     @story = create :story
@@ -28,19 +28,12 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should create story' do
-    story = build :story
+    param = attributes_for :story
 
-    param = {
-      title: story.title,
-      description: story.description,
-      owner_id: story.owner_id,
-      performer_id: story.performer_id
-    }
-
-    post :create, story: param
+    post :create, story: param.merge(owner_id: @user.id, performer_id: @user.id)
     assert_response :redirect
 
-    story = Story.find_by_title(story.title)
+    story = Story.find_by_title(param[:title])
     assert_not_nil story
   end
 

@@ -1,28 +1,22 @@
 require 'test_helper'
 
-class CommentsControllerTest < ActionController::TestCase
+class Web::Story::CommentsControllerTest < ActionController::TestCase
   setup do
     @user = create :user
     @comment = create :comment
-    sign_in @user
+    @story = create :story
 
+    sign_in @user
     @request.env['HTTP_REFERER'] = root_path
   end
 
   test 'should create comment' do
-    
-    comment = build :comment
+    comment = attributes_for(:comment).merge(owner_id: @user.id, story_id: @story.id)
 
-    param = {
-      owner_id: comment.owner_id,
-      story_id: comment.story_id,
-      message: comment.message,
-    }
-
-    post :create, comment: param, story_id: comment.story_id
+    post :create, {comment: comment, story_id: comment[:story_id]}
     assert_response :redirect
 
-    comment = Comment.find_by_message(comment.message)
+    comment = Comment.find_by_message(comment[:message])
     assert comment
   end
 

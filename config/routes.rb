@@ -1,12 +1,15 @@
 Railsapp::Application.routes.draw do
-  resources :users
-  resources :sessions
-  resources :stories do
-    resources :comments, only: [:create, :destroy]
+  scope :module => :web do
+    resources :users
+    resources :sessions
+    resources :stories do
+      scope :module => :story do
+        resources :comments, only: [:create, :destroy]
+      end
+    end
   end
-  
 
-  root :to => 'stories#index'
+  root :to => 'web/stories#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
