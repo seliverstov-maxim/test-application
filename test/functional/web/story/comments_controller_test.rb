@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Web::Comments::CommentsControllerTest < ActionController::TestCase
+class Web::Story::CommentsControllerTest < ActionController::TestCase
   setup do
     @user = create :user
     @comment = create :comment
@@ -10,7 +10,6 @@ class Web::Comments::CommentsControllerTest < ActionController::TestCase
   end
 
   test 'should create comment' do
-    
     comment = build :comment
 
     param = {
