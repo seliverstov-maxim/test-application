@@ -27,7 +27,7 @@
         %td= story.state
         %td= story.title
         %td= story.description
-        %td=l story.created_at
+        %td= story.created_at.strftime("%m/%d/%Y")
         %td
           = link_to t('.show', :default => t("helpers.links.show")), story_path(story), :class => 'btn btn-mini'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_story_path(story), :class => 'btn btn-mini'
