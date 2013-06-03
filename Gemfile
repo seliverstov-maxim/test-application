@@ -22,6 +22,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'factory_girl_rails'
 end
+
 gem 'sass-rails',   '~> 3.2.3'
 gem 'jquery-rails'
 gem 'haml-rails'
